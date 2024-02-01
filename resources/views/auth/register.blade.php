@@ -17,15 +17,15 @@
         </div>
 
         <div class="mt-4">
-            <x-input-label for="fonction" :value="__('Fonction')" />
-            <select id="fonction" class="block mt-1 w-full" name="fonction">
+            <x-input-label for="role" :value="__('Fonction')" />
+            <select id="role" class="block mt-1 w-full" name="role">
                 <option value="magasinier">Magasinier</option>
                 <option value="administrateur">Administrateur</option>
                 <option value="directeur">Directeur</option>
                 <option value="ResponsableStock">Responsable de stock</option>
             </select>
-            
-            <x-input-error :messages="$errors->get('fonction')" class="mt-2" />
+
+            <x-input-error :messages="$errors->get('role')" class="mt-2" />
         </div>
 
         <!-- Password -->

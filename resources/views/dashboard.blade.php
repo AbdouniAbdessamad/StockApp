@@ -29,7 +29,7 @@
                                     {{ auth()->user()->name }}
                                 </td>
                                 <td class="py-2 px-4 whitespace-nowrap">
-                                    {{ auth()->user()->fonction }}
+                                    {{ auth()->user()->role }}
                                 </td>
                                 <td class="py-2 px-4 whitespace-nowrap">
                                     {{ auth()->user()->id }}
