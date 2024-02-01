@@ -14,7 +14,8 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        //
+        $suppliers = Supplier::paginate(10);
+        return view('supplier.index', ['suppliers'=>$suppliers]);
     }
 
     /**
@@ -24,7 +25,7 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        //
+        return view('supplier.create');
     }
 
     /**
@@ -46,7 +47,7 @@ class SupplierController extends Controller
      */
     public function show(Supplier $supplier)
     {
-        //
+        return view('supplier.show', $supplier);
     }
 
     /**
@@ -57,7 +58,7 @@ class SupplierController extends Controller
      */
     public function edit(Supplier $supplier)
     {
-        //
+        return view('supplier.edit', $supplier);
     }
 
     /**
@@ -80,6 +81,7 @@ class SupplierController extends Controller
      */
     public function destroy(Supplier $supplier)
     {
-        //
+        $supplier->delete();
+        return redirect()->route("suppliers.index");
     }
 }

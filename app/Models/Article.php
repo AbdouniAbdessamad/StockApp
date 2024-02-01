@@ -15,7 +15,7 @@ class Article extends Model
     protected $fillable = [
         'date',
         'bon_commande',
-        'fournisseur_id',
+        'supplier_id',
         'ref',
         'name',
         'quantity',
@@ -32,6 +32,11 @@ class Article extends Model
     public function lastEditor()
     {
         return $this->belongsTo(User::class, 'last_editor_id', 'id');
+    }
+
+    public function supplier()
+    {
+        return $this->belongsTo(Supplier::class);
     }
 
 }

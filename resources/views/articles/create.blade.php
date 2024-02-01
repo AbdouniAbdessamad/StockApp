@@ -37,9 +37,13 @@
                             </div>
 
                             <div>
-                                <x-input-label for="fournisseur" :value="__('Fournisseur/Bénéficiaire')" />
-                                <x-text-input id="fournisseur" name="fournisseur" type="text" class="mt-1 block w-full" :value="old('fournisseur')" required autofocus autocomplete="fournisseur" />
-                                <x-input-error class="mt-2" :messages="$errors->get('fournisseur')" />
+                                <x-input-label for="supplier_id" :value="__('Fournisseur/Bénéficiaire')" />
+                                <select name="supplier_id" id="" class="form-control w-full">
+                                    @foreach ($suppliers as $supplier)
+                                    <option value="{{$supplier->id}}">{{$supplier->name}}</option>
+                                    @endforeach
+                                </select>
+                                <x-input-error class="mt-2" :messages="$errors->get('supplier_id')" />
                             </div>
 
                             <div>

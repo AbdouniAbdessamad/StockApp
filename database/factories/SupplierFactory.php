@@ -17,7 +17,12 @@ class SupplierFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => fake()->company,
+            'city' => fake()->city,
+            'country' => fake()->country,
+            'address' => fake()->address,
+            'phone' => fake()->e164PhoneNumber,
+            'type' => 'Office Supply'
         ];
     }
 }

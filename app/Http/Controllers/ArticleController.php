@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Article;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,7 +29,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('articles.create');
+        $suppliers = Supplier::select('id', 'name')->get();
+        return view('articles.create', ['suppliers' => $suppliers]);
     }
 
     /**
@@ -49,7 +51,7 @@ class ArticleController extends Controller
             'category_id' => '', // Assuming this is optional
             'status' => '', // Assuming this is optional
         ]);
-    
+
         $article = new Article;
         $article->date = $request->date;
         $article->bon_commande = $request->bon_commande;
@@ -61,10 +63,10 @@ class ArticleController extends Controller
         $article->status = $request->status;
         $article->last_editor = Auth::id();
         $article->save();
-    
+
         return redirect()->route('articles.show', ['article' => $article->id]);
     }
-    
+
 
     /**
      * Display the specified resource.
@@ -115,7 +117,7 @@ class ArticleController extends Controller
 
         return Redirect::route('articles.edit', ["article" => $article->id])->with('status', 'article-updated');
     }
-    
+
 
     /**
      * Remove the specified resource from storage.

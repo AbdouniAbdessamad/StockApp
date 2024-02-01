@@ -13,6 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
+
+        Schema::disableForeignKeyConstraints();
+
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->date("date");
@@ -26,6 +29,8 @@ return new class extends Migration
             $table->foreignId("last_editor_id")->constrained('users'); // Specify the referenced table
             $table->timestamps();
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     public function down()
