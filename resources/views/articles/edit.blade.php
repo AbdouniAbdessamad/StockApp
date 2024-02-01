@@ -36,9 +36,9 @@
                                 <x-input-error class="mt-2" :messages="$errors->get('bon_commande')" />
                             </div>
                                 <div>
-                                 <x-input-label for="fournisseur" :value="__('Fournisseur/Bénéficiaire')" />
-                                    <x-text-input id="fournisseur" name="fournisseur" type="text" class="mt-1 block w-full" :value="old('fournisseur', $article->fournisseur)" required autofocus autocomplete="fournisseur" />
-                                    <x-input-error class="mt-2" :messages="$errors->get('fournisseur')" />
+                                 <x-input-label for="supplier_id" :value="__('Fournisseur/Bénéficiaire')" />
+                                    <x-text-input id="supplier_id" name="supplier_id" type="text" class="mt-1 block w-full" :value="old('supplier_id', $article->supplier_id)" required autofocus autocomplete="supplier_id" />
+                                    <x-input-error class="mt-2" :messages="$errors->get('supplier_id')" />
                                 </div>
                             <div>
                                 <x-input-label for="name" :value="__('Designation')" />

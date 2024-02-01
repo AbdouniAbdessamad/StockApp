@@ -44,7 +44,7 @@ class ArticleController extends Controller
         $request->validate([
             'date' => 'required|date',
             'bon_commande' => 'required|max:225|min:1',
-            'fournisseur' => 'required|max:225|min:4',
+            'supplier_id' => 'required|max:225|min:4',
             'ref' => 'required|max:225|min:1',
             'name' => 'required|max:225|min:1',
             'quantity' => 'required|numeric|min:0',
@@ -55,7 +55,7 @@ class ArticleController extends Controller
         $article = new Article;
         $article->date = $request->date;
         $article->bon_commande = $request->bon_commande;
-        $article->fournisseur = $request->fournisseur;
+        $article->supplier_id = $request->supplier_id;
         $article->ref = $request->ref;
         $article->name = $request->name;
         $article->quantity = $request->quantity;
@@ -102,7 +102,7 @@ class ArticleController extends Controller
         $data = $request->validate([
             "date" => "required|date",
             "bon_commande" => "required|max:225|min:1",
-            "fournisseur" => "required|max:225|min:4",
+            "supplier_id" => "required|max:225|min:4",
             "ref" => "required|max:225|min:1",
             "name" => "required|max:225|min:1",
             "quantity" => "required|numeric|min:0",

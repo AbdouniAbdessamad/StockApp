@@ -20,7 +20,7 @@ return new class extends Migration
             $table->id();
             $table->date("date");
             $table->string("bon_commande")->nullable();
-            $table->string("fournisseur_id")->nullable()->constrained();
+            $table->string("supplier_id")->nullable()->constrained();
             $table->string("ref");
             $table->string("name");
             $table->integer("quantity");
