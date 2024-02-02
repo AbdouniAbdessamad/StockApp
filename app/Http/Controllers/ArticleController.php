@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Category;
 
 class ArticleController extends Controller
 {
@@ -28,9 +29,10 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {   
+        $category=Category::select('id','name')->get();
         $suppliers = Supplier::select('id', 'name')->get();
-        return view('articles.create', ['suppliers' => $suppliers]);
+        return view('articles.create', ['suppliers' => $suppliers],['category' => $category]);
     }
 
     /**

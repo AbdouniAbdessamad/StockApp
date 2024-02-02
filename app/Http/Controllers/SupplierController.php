@@ -36,7 +36,23 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|min:3',
+            'city' =>  'nullable|string|max:255',
+            'country' =>  'nullable|string|max:255',
+            'address' =>  'nullable|string|max:255',
+            'phone' =>  'numeric|digits_between:8,14',
+            'type' => 'nullable|string|',
+        ]);
+        $supplier= new Supplier;
+        $supplier->name=$request->name;
+        $supplier->city=$request->city;
+        $supplier->country=$request->country;
+        $supplier->address=$request->address;
+        $supplier->phone=$request->phone;
+        $supplier->type=$request->type;
+        $supplier->save();
+        return redirect()->route('supplier.show', ['supplier' => $supplier->id]);
     }
 
     /**
@@ -46,9 +62,9 @@ class SupplierController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Supplier $supplier)
-    {
-        return view('supplier.show', $supplier);
-    }
+{
+    return view('supplier.show', ['supplier' => $supplier]);
+}
 
     /**
      * Show the form for editing the specified resource.
@@ -58,7 +74,7 @@ class SupplierController extends Controller
      */
     public function edit(Supplier $supplier)
     {
-        return view('supplier.edit', $supplier);
+        return view('supplier.edit', ['supplier'=>$supplier]);
     }
 
     /**
@@ -70,7 +86,25 @@ class SupplierController extends Controller
      */
     public function update(Request $request, Supplier $supplier)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|min:3',
+            'city' => 'nullable|string|max:255',
+            'country' => 'nullable|string|max:255',
+            'address' => 'nullable|string|max:255',
+            'phone' => 'digits_between:8,14',
+            'type' => 'nullable|string',
+        ]);
+    
+        $supplier->update([
+            'name' => $request->name,
+            'city' => $request->city,
+            'country' => $request->country,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'type' => $request->type,
+        ]);
+    
+        return redirect()->route('supplier.show', ['supplier' => $supplier->id]);
     }
 
     /**
@@ -82,6 +116,6 @@ class SupplierController extends Controller
     public function destroy(Supplier $supplier)
     {
         $supplier->delete();
-        return redirect()->route("suppliers.index");
+        return redirect()->route("supplier.index");
     }
 }

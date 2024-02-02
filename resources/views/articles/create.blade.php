@@ -67,12 +67,13 @@
                             </div>
 
                             <div>
-                                <x-input-label for="category" :value="__('Catégorie')" />
-                                <select name="category_id" id="category">
-                                    <option></option>
+                                <x-input-label for="category" :value="__('Categorie')" />
+                                <select name="category" id="" class="form-control w-full">
+                                    @foreach ($category as $cat)
+                                    <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                    @endforeach
                                 </select>
-                                <x-input-error class="mt-2" :messages="$errors->get('category_id')" />
-
+                                <x-input-error class="mt-2" :messages="$errors->get('supplier_id')" />
                             </div>
 
                             <div>
