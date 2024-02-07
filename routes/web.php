@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\CategoryController;
-
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AlertController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,12 +20,11 @@ use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
     return view('welcome');
+})->name("auth.login");
+Route::get('/dashboard', [UserController::class, 'dashboard'])->middleware(['auth', 'verified',])->name('dashboard');
+Route::get('/login', function () {
+    return view('auth.register')->name('register');
 })->name("home");
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified',])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -33,6 +33,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('supplier', SupplierController::class);
     Route::resource('category',CategoryController::class);
 });
+Route::get('/alertStock', [AlertController::class, 'index'])->name('alert.index');
+
 
 
 require __DIR__.'/auth.php';

@@ -24,6 +24,9 @@
                     <x-nav-link :href="route('category.index')" :active="request()->routeIs('category.index')">
                         {{ __('Catégories') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('alert.index')" :active="request()->routeIs('alert.index')">
+                        {{ __('Alert Stock') }}
+                    </x-nav-link>
                 </div>
             </div>
 

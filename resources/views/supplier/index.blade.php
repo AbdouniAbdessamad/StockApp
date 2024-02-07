@@ -1,14 +1,16 @@
 <x-app-layout>
-    <x-slot name="header">
+<x-slot name="header">
+<x-slot name="header">
         <div class="flex flex-row justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                {{ __('Fournisseurs') }}
+                <a href="{{ route('dashboard') }}" style="{{ request()->routeIs('dashboard') ? 'color: #4F46E5;' : '' }}">
+                    {{ __('Fournisseurs') }}
+                </a>
             </h2>
             <a href="{{ route('supplier.create') }}"
                 class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Ajouter
                 un Fournisseur</a>
         </div>
-
     </x-slot>
 
     <div class="py-12">

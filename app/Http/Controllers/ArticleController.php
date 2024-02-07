@@ -17,10 +17,11 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles=Article::get();
-        return view('articles.index',[
-            'articles'=>$articles
-        ]);
+        $articles = Article::with('category', 'lastEditor')->get();
+        
+        
+
+        return view('articles.index', compact('articles'));
     }
 
     /**
@@ -46,12 +47,12 @@ class ArticleController extends Controller
         $request->validate([
             'date' => 'required|date',
             'bon_commande' => 'required|max:225|min:1',
-            'supplier_id' => 'required|max:225|min:4',
+            'supplier_id' => 'required|max:225',
             'ref' => 'required|max:225|min:1',
             'name' => 'required|max:225|min:1',
             'quantity' => 'required|numeric|min:0',
-            'category_id' => '', // Assuming this is optional
-            'status' => '', // Assuming this is optional
+            'category_id' => '', 
+            'status' => '', 
         ]);
 
         $article = new Article;
@@ -63,7 +64,7 @@ class ArticleController extends Controller
         $article->quantity = $request->quantity;
         $article->category_id = $request->category_id;
         $article->status = $request->status;
-        $article->last_editor = Auth::id();
+        $article->last_editor_id = Auth::id();
         $article->save();
 
         return redirect()->route('articles.show', ['article' => $article->id]);
@@ -104,7 +105,7 @@ class ArticleController extends Controller
         $data = $request->validate([
             "date" => "required|date",
             "bon_commande" => "required|max:225|min:1",
-            "supplier_id" => "required|max:225|min:4",
+            "supplier_id" => "required|max:225",
             "ref" => "required|max:225|min:1",
             "name" => "required|max:225|min:1",
             "quantity" => "required|numeric|min:0",
@@ -113,7 +114,7 @@ class ArticleController extends Controller
         ]);
 
         // Add the last_editor_id when updating the article
-        $data['last_editor'] = Auth::id();
+        $data['last_editor_id'] = Auth::id();
 
         $article->update($data);
 
