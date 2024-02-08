@@ -1,3 +1,28 @@
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById('filter-button').addEventListener('click', function() {
+        var filterValue = document.getElementById('supplier-filter').value.trim().toLowerCase();
+        var rows = document.querySelectorAll('tbody tr');
+
+        rows.forEach(function(row) {
+            var name = row.querySelector('td:nth-child(2)').textContent.trim().toLowerCase();
+            if (name.includes(filterValue)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+
+    document.getElementById('reset-button').addEventListener('click', function() {
+        var rows = document.querySelectorAll('tbody tr');
+        rows.forEach(function(row) {
+            row.style.display = '';
+        });
+        document.getElementById('supplier-filter').value = '';
+    });
+});
+</script>
 <x-app-layout>
     <x-slot name="header">
         <div class="flex flex-row justify-between items-center">
@@ -15,6 +40,12 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class=" text-gray-900 dark:text-gray-100">
+                <div class="flex items-center mb-4">
+                        <input type="text" id="supplier-filter" class="form-input w-full rounded-md shadow-sm" placeholder="Enter Article Name">
+                        <button id="filter-button" class="ml-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">Filter</button>
+                        <button id="reset-button" class="ml-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500">Reset</button>
+                    </div>
+
                     <div class="border flex flex-col">
                         <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
                             <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">

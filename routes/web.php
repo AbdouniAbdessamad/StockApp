@@ -6,7 +6,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AlertController;
+use App\Http\Controllers\LowQuantityController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,8 +32,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('articles', ArticleController::class);
     Route::resource('supplier', SupplierController::class);
     Route::resource('category',CategoryController::class);
+    Route::resource('lowquantity',LowQuantityController::class);
 });
-Route::get('/alertStock', [AlertController::class, 'index'])->name('alert.index');
+Route::get('/alertStock', [LowQuantityController::class, 'index'])->name('alert.index');
 
 
 

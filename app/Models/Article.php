@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\User;
-use App\Models\Alert;
+
 
 class Article extends Model
 {
@@ -38,9 +38,9 @@ class Article extends Model
     {
         return $this->belongsTo(Supplier::class);
     }
-
-    public function alerts(): HasMany
+    public function lowQuantityArticle()
     {
-        return $this->hasMany(Alert::class);
+        return $this->hasOne(LowQuantity::class, 'ref', 'ref');
     }
+
 }

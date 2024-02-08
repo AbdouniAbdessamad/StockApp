@@ -30,11 +30,11 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
-        $category=Category::select('id','name')->get();
-        $suppliers = Supplier::select('id', 'name')->get();
-        return view('articles.create', ['suppliers' => $suppliers],['category' => $category]);
-    }
+{   
+    $categories = Category::select('id', 'name')->get(); // Change $category to $categories
+    $suppliers = Supplier::select('id', 'name')->get();
+    return view('articles.create', compact('suppliers', 'categories')); // Pass categories using compact
+}
 
     /**
      * Store a newly created resource in storage.
@@ -89,9 +89,10 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Article $article)
-    {
-        return view('articles.edit',['article'=>$article]);
-    }
+{
+    $categories = Category::select('id', 'name')->get(); 
+    return view('articles.edit', compact('article', 'categories')); 
+}
 
     /**
      * Update the specified resource in storage.
