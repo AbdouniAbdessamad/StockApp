@@ -15,22 +15,22 @@
                         <div class="mt-6 border-t border-gray-100">
                             <dl class="divide-y divide-gray-100">
                             <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt class="text-md font-medium leading-6 text-gray-900">Name</dt>
+                                    <dt class="text-md font-medium leading-6 text-gray-900">Nom</dt>
                                     <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{$supplier->name}}
                                     </dd>
                                 </div>
                                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt class="text-md font-medium leading-6 text-gray-900">City</dt>
+                                    <dt class="text-md font-medium leading-6 text-gray-900">Ville</dt>
                                     <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{$supplier->city}}
                                     </dd>
                                 </div>
                                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt class="text-md font-medium leading-6 text-gray-900">Country</dt>
+                                    <dt class="text-md font-medium leading-6 text-gray-900">Pays</dt>
                                     <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{$supplier->country}}
                                     </dd>
                                 </div>
                                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt class="text-md font-medium leading-6 text-gray-900">Phone</dt>
+                                    <dt class="text-md font-medium leading-6 text-gray-900">Numéro de téléphone</dt>
                                     <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{$supplier->phone}}
                                     </dd>
                                 </div>

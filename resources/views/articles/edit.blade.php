@@ -47,7 +47,7 @@
                                 <x-input-error class="mt-2" :messages="$errors->get('supplier_id')" />
                             </div>
                             <div>
-                                <x-input-label for="name" :value="__('Designation')" />
+                                <x-input-label for="name" :value="__('Désignation')" />
                                 <x-text-input id="name" name="name" type="text" class="mt-1 block w-full"
                                     :value="old('name',$article->name)" required autofocus autocomplete="name" />
                                 <x-input-error class="mt-2" :messages="$errors->get('name')" />
@@ -97,7 +97,7 @@
                             </div>
 
                             <div>
-                                <x-input-label for="last_editor" :value="__('Last Editor')" />
+                                <x-input-label for="last_editor" :value="__('Dernier éditeur')" />
                                 <x-text-input id="last_editor" name="last_editor" type="text" class="mt-1 block w-full"
                                     :value="old('last_editor',$article->last_editor)" disabled />
                                 <x-input-error class="mt-2" :messages="$errors->get('last_editor')" />
@@ -112,7 +112,7 @@
                                 @if (session('status') === 'article-updated')
                                 <p x-data="{ show: true }" x-show="show" x-transition
                                     x-init="setTimeout(() => show = false, 2000)"
-                                    class="text-sm text-gray-600 dark:text-gray-400">{{ __('Saved.') }}</p>
+                                    class="text-sm text-gray-600 dark:text-gray-400">{{ __('Sauvegardé.') }}</p>
                                 @endif
                             </div>
                         </form>

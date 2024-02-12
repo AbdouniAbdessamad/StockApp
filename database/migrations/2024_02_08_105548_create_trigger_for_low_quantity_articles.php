@@ -15,7 +15,8 @@ return new class extends Migration
     {
         DB::unprepared('
         -- Create trigger to update articles quantity based on status
-CREATE TRIGGER before_insert_article BEFORE INSERT ON articles
+CREATE TRIGGER before_insert_article 
+BEFORE INSERT ON articles
 FOR EACH ROW
 BEGIN
     DECLARE updatedQuantity INT;
@@ -32,7 +33,7 @@ BEGIN
     END IF;
 END;
 
--- Create trigger to insert low quantity articles
+
 CREATE TRIGGER after_insert_article AFTER INSERT ON articles
 FOR EACH ROW
 BEGIN
@@ -42,7 +43,7 @@ BEGIN
     END IF;
 END;
 
--- Create trigger to delete low quantity articles if quantity goes above 10
+
 CREATE TRIGGER after_update_article AFTER UPDATE ON articles
 FOR EACH ROW
 BEGIN
