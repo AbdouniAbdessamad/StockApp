@@ -23,25 +23,25 @@
                         <form method="post" action="{{ route('supplier.store') }}" class="mt-6 space-y-6">
                             @csrf
                             <div>
-                                <x-input-label for="name" :value="__('Name')" />
+                                <x-input-label for="name" :value="__('Nom')" />
                                 <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name')" required autofocus autocomplete="name" />
                                 <x-input-error class="mt-2" :messages="$errors->get('name')" />
                             </div>
 
                             <div>
-                                <x-input-label for="city" :value="__('City')" />
+                                <x-input-label for="city" :value="__('Ville')" />
                                 <x-text-input id="city" name="city" type="text" class="mt-1 block w-full" :value="old('city')" required autofocus autocomplete="city" />
                                 <x-input-error class="mt-2" :messages="$errors->get('city')" />
                             </div>
 
                             <div>
-                                <x-input-label for="country" :value="__('Country')" />
+                                <x-input-label for="country" :value="__('Pays')" />
                                 <x-text-input id="country" name="country" type="text" class="mt-1 block w-full" :value="old('country')" required autofocus autocomplete="country" />
                                 <x-input-error class="mt-2" :messages="$errors->get('country')" />
                             </div>
 
                             <div>
-                                <x-input-label for="phone" :value="__('Phone')" />
+                                <x-input-label for="phone" :value="__('Numéro de téléphone')" />
                                 <x-text-input id="phone" name="phone" type="number" class="mt-1 block w-full" :value="old('phone')" required autofocus autocomplete="phone" />
                                 <x-input-error class="mt-2" :messages="$errors->get('phone')" />
                             </div>
@@ -62,7 +62,7 @@
                                         x-transition
                                         x-init="setTimeout(() => show = false, 2000)"
                                         class="text-sm text-gray-600 dark:text-gray-400"
-                                    >{{ __('Saved.') }}</p>
+                                    >{{ __('Sauvegardé.') }}</p>
                                 @endif
                             </div>
                         </form>

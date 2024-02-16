@@ -41,9 +41,9 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class=" text-gray-900 dark:text-gray-100">
                 <div class="flex items-center mb-4">
-                        <input type="text" id="supplier-filter" class="form-input w-full rounded-md shadow-sm" placeholder="Enter Article Name">
-                        <button id="filter-button" class="ml-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">Filter</button>
-                        <button id="reset-button" class="ml-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500">Reset</button>
+                        <input type="text" id="supplier-filter" class="form-input w-full rounded-md shadow-sm" placeholder="Entrer Nom Article">
+                        <button id="filter-button" class="ml-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">Filtrer</button>
+                        <button id="reset-button" class="ml-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500">Réinitialiser</button>
                     </div>
 
                     <div class="border flex flex-col">
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                                     class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                                     Last editor</th>
                                                 <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                                                    <span class="sr-only">Edit</span>
+                                                    <span class="sr-only">Editer</span>
                                                 </th>
                                             </tr>
                                         </thead>
@@ -104,13 +104,13 @@ document.addEventListener("DOMContentLoaded", function() {
                                                         <a href="{{ route('articles.edit', ['article' => $article->id]) }}"
                                                             class="text-indigo-600 hover:text-indigo-900">
                                                             <x-primary-button>
-                                                            Edit
+                                                            Editer
                                                             </x-primary-button>
                                                         </a>
                                                         <x-danger-button
                                                             x-data=""
                                                             x-on:click.prevent="$dispatch('open-modal', 'confirm-article-{{$article->id}}-deletion')"
-                                                            >{{ __('Delete Article') }}</x-danger-button>
+                                                            >{{ __('Supprimer Article') }}</x-danger-button>
                                                         <x-modal name="confirm-article-{{$article->id}}-deletion" focusable>
                                                             <form method="post" action="{{ route('articles.destroy',["article"=>$article->id]) }}" class="p-6 text-center">
                                                                 @csrf
@@ -123,11 +123,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
                                                                 <div class="mt-6 flex justify-center">
                                                                     <x-secondary-button x-on:click="$dispatch('close')">
-                                                                        {{ __('Cancel') }}
+                                                                        {{ __('Annuler') }}
                                                                     </x-secondary-button>
 
                                                                     <x-danger-button class="ml-3">
-                                                                        {{ __('Delete Article') }}
+                                                                        {{ __('Supprimer Article') }}
                                                                     </x-danger-button>
                                                                 </div>
                                                             </form>
