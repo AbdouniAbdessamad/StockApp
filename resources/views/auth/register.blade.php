@@ -17,15 +17,15 @@
         </div>
 
         <div class="mt-4">
-            <x-input-label for="fonction" :value="__('Fonction')" />
-            <select id="fonction" class="block mt-1 w-full" name="fonction">
+            <x-input-label for="role" :value="__('Fonction')" />
+            <select id="role" class="block mt-1 w-full" name="role">
                 <option value="magasinier">Magasinier</option>
                 <option value="administrateur">Administrateur</option>
                 <option value="directeur">Directeur</option>
                 <option value="ResponsableStock">Responsable de stock</option>
             </select>
-            
-            <x-input-error :messages="$errors->get('fonction')" class="mt-2" />
+
+            <x-input-error :messages="$errors->get('role')" class="mt-2" />
         </div>
 
         <!-- Password -->
@@ -53,7 +53,7 @@
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
+                {{ __('Se connecter?') }}
             </a>
 
             <x-primary-button class="ml-4">

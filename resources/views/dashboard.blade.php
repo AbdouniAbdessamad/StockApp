@@ -24,17 +24,19 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-600">
+                            @foreach($users as $user)
                             <tr>
                                 <td class="py-2 px-4 whitespace-nowrap">
-                                    {{ auth()->user()->name }}
+                                    {{ $user->name }}
                                 </td>
                                 <td class="py-2 px-4 whitespace-nowrap">
-                                    {{ auth()->user()->fonction }}
+                                    {{ $user->role }}
                                 </td>
                                 <td class="py-2 px-4 whitespace-nowrap">
-                                    {{ auth()->user()->id }}
+                                    {{ $user->id }}
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -42,6 +44,3 @@
         </div>
     </div>
 </x-app-layout>
-
-
-

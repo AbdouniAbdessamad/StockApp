@@ -26,50 +26,62 @@
                             @csrf
                             <div>
                                 <x-input-label for="date" :value="__('Date')" />
-                                <x-text-input id="date" name="date" type="date" class="mt-1 block w-full" :value="old('date')" required autofocus autocomplete="date" />
+                                <x-text-input id="date" name="date" type="date" class="mt-1 block w-full"
+                                    :value="old('date')" required autofocus autocomplete="date" />
                                 <x-input-error class="mt-2" :messages="$errors->get('date')" />
                             </div>
 
                             <div>
                                 <x-input-label for="bon_commande" :value="__('Bon Commande/Bon Sortie')" />
-                                <x-text-input id="bon_commande" name="bon_commande" type="text" class="mt-1 block w-full" :value="old('bon_commande')" required autofocus autocomplete="bon_commande" />
+                                <x-text-input id="bon_commande" name="bon_commande" type="text"
+                                    class="mt-1 block w-full" :value="old('bon_commande')" required autofocus
+                                    autocomplete="bon_commande" />
                                 <x-input-error class="mt-2" :messages="$errors->get('bon_commande')" />
                             </div>
 
                             <div>
-                                <x-input-label for="fournisseur" :value="__('Fournisseur/Bénéficiaire')" />
-                                <x-text-input id="fournisseur" name="fournisseur" type="text" class="mt-1 block w-full" :value="old('fournisseur')" required autofocus autocomplete="fournisseur" />
-                                <x-input-error class="mt-2" :messages="$errors->get('fournisseur')" />
+                                <x-input-label for="supplier_id" :value="__('Fournisseur/Bénéficiaire')" />
+                                <select name="supplier_id" id="" class="form-control w-full">
+                                    @foreach ($suppliers as $supplier)
+                                    <option value="{{$supplier->id}}">{{$supplier->name}}</option>
+                                    @endforeach
+                                </select>
+                                <x-input-error class="mt-2" :messages="$errors->get('supplier_id')" />
                             </div>
 
                             <div>
                                 <x-input-label for="name" :value="__('Name')" />
-                                <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name')" required autofocus autocomplete="name" />
+                                <x-text-input id="name" name="name" type="text" class="mt-1 block w-full"
+                                    :value="old('name')" required autofocus autocomplete="name" />
                                 <x-input-error class="mt-2" :messages="$errors->get('name')" />
                             </div>
 
                             <div>
                                 <x-input-label for="ref" :value="__('Reference')" />
-                                <x-text-input id="ref" name="ref" type="text" class="mt-1 block w-full" :value="old('ref')" required />
+                                <x-text-input id="ref" name="ref" type="text" class="mt-1 block w-full"
+                                    :value="old('ref')" required />
                                 <x-input-error class="mt-2" :messages="$errors->get('ref')" />
 
                             </div>
 
                             <div>
                                 <x-input-label for="quantity" :value="__('Quantité')" />
-                                <x-text-input id="quantity" name="quantity" type="number" class="mt-1 block w-full" :value="old('quantity')" required />
+                                <x-text-input id="quantity" name="quantity" type="number" class="mt-1 block w-full"
+                                    :value="old('quantity')" required />
                                 <x-input-error class="mt-2" :messages="$errors->get('quantity')" />
 
                             </div>
 
                             <div>
-                                <x-input-label for="category" :value="__('Catégorie')" />
-                                <select name="category_id" id="category">
-                                    <option></option>
+                                <x-input-label for="category" :value="__('Categorie')" />
+                                <select name="category_id" id="category" class="form-control w-full">
+                                    @foreach ($categories as $cat)
+                                    <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                                    @endforeach
                                 </select>
                                 <x-input-error class="mt-2" :messages="$errors->get('category_id')" />
-
                             </div>
+
 
                             <div>
                                 <x-input-label for="status" :value="__('Status')" />
@@ -84,7 +96,8 @@
 
                             <div>
                                 <x-input-label for="last_editor" :value="__('Last Editor')" />
-                                <x-text-input id="last_editor" name="last_editor" type="text" class="mt-1 block w-full" :value="old('last_editor')" disabled />
+                                <x-text-input id="last_editor" name="last_editor" type="text" class="mt-1 block w-full"
+                                    :value="old('last_editor')" disabled />
                                 <x-input-error class="mt-2" :messages="$errors->get('last_editor')" />
 
                             </div>
@@ -95,13 +108,9 @@
                                 <x-primary-button>{{ __('Save') }}</x-primary-button>
 
                                 @if (session('status') === 'profile-updated')
-                                    <p
-                                        x-data="{ show: true }"
-                                        x-show="show"
-                                        x-transition
-                                        x-init="setTimeout(() => show = false, 2000)"
-                                        class="text-sm text-gray-600 dark:text-gray-400"
-                                    >{{ __('Saved.') }}</p>
+                                <p x-data="{ show: true }" x-show="show" x-transition
+                                    x-init="setTimeout(() => show = false, 2000)"
+                                    class="text-sm text-gray-600 dark:text-gray-400">{{ __('Saved.') }}</p>
                                 @endif
                             </div>
                         </form>

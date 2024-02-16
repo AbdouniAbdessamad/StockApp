@@ -1,35 +1,40 @@
-<?php
+    <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+    use Illuminate\Database\Migrations\Migration;
+    use Illuminate\Database\Schema\Blueprint;
+    use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    return new class extends Migration
     {
-        Schema::create('articles', function (Blueprint $table) {
-            $table->id();
-            $table->date("date");
-            $table->string("bon_commande");
-            $table->string("fournisseur");
-            $table->string("ref");
-            $table->string("name");
-            $table->integer("quantity");
-            $table->string("status")->nullable();
-            $table->foreignId("category_id")->nullable()->constrained();
-            $table->foreignId("last_editor")->constrained('users'); // Specify the referenced table
-            $table->timestamps();
-        });
-    }
+        /**
+         * Run the migrations.
+         *
+         * @return void
+         */
+        public function up()
+        {
 
-    public function down()
-    {
-        Schema::dropIfExists('articles');
-    }
-};
+            Schema::disableForeignKeyConstraints();
+
+            Schema::create('articles', function (Blueprint $table) {
+                $table->id();
+                $table->date("date");
+                $table->string("bon_commande")->nullable();
+                $table->string("supplier_id")->nullable()->constrained();
+                $table->string("ref");
+                $table->string("name");
+                $table->integer("quantity");
+                $table->string("status")->nullable();
+                $table->foreignId("category_id")->nullable()->constrained('categories');
+                $table->foreignId("last_editor_id")->constrained('users'); // Specify the referenced table
+                $table->timestamps();
+            });
+
+            Schema::enableForeignKeyConstraints();
+        }
+
+        public function down()
+        {
+            Schema::dropIfExists('articles');
+        }
+    };
