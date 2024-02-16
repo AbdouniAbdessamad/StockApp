@@ -1,3 +1,3 @@
 <div>
-    <img src="{{ asset('Logo Isat FR.png') }}" alt="ISAT MEKNES" width="140px" height="140px">
+    <img class="w-80 h-30" src="{{ asset('Logo Isat FR.png') }}" alt="ISAT MEKNES">
 </div>
