@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var rows = document.querySelectorAll('tbody tr');
 
         rows.forEach(function(row) {
-            var name = row.querySelector('td:nth-child(2)').textContent.trim().toLowerCase();
+            var name = row.querySelector('td:nth-child(4)').textContent.trim().toLowerCase();
             if (name.includes(filterValue)) {
                 row.style.display = '';
             } else {
@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 </script>
+
 <x-app-layout>
     <x-slot name="header">
         <div class="flex flex-row justify-between items-center">
@@ -79,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                                     Status</th>
                                                 <th scope="col"
                                                     class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                                    Last editor</th>
+                                                    Dernier Editeur</th>
                                                 <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                                                     <span class="sr-only">Editer</span>
                                                 </th>
@@ -98,41 +99,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $article->status }}</td>
                                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $article->last_editor_id }}</td>
                                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6"></td>
-                                                    <td
-                                                        class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-
-                                                        <a href="{{ route('articles.edit', ['article' => $article->id]) }}"
-                                                            class="text-indigo-600 hover:text-indigo-900">
-                                                            <x-primary-button>
-                                                            Editer
-                                                            </x-primary-button>
-                                                        </a>
-                                                        <x-danger-button
-                                                            x-data=""
-                                                            x-on:click.prevent="$dispatch('open-modal', 'confirm-article-{{$article->id}}-deletion')"
-                                                            >{{ __('Supprimer Article') }}</x-danger-button>
-                                                        <x-modal name="confirm-article-{{$article->id}}-deletion" focusable>
-                                                            <form method="post" action="{{ route('articles.destroy',["article"=>$article->id]) }}" class="p-6 text-center">
-                                                                @csrf
-                                                                @method('delete')
-
-                                                                <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                                                                    {{ __("Confirmer la suppression de l'article") }}
-                                                                </h2>
-
-
-                                                                <div class="mt-6 flex justify-center">
-                                                                    <x-secondary-button x-on:click="$dispatch('close')">
-                                                                        {{ __('Annuler') }}
-                                                                    </x-secondary-button>
-
-                                                                    <x-danger-button class="ml-3">
-                                                                        {{ __('Supprimer Article') }}
-                                                                    </x-danger-button>
-                                                                </div>
-                                                            </form>
-                                                        </x-modal>
-                                                    </td>
+                                            
                                                 </tr>
                                             @endforeach
                                         </tbody>

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('ref')->constrained();
             $table->string('name');
             $table->integer('quantity');
+            $table->string('status');
             $table->timestamps();
         });
 

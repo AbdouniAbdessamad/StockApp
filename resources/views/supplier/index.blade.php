@@ -43,11 +43,14 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class=" text-gray-900 dark:text-gray-100">
-                    <div class="flex items-center mb-4">
-                        <input type="text" id="supplier-filter" class="form-input w-full rounded-md shadow-sm" placeholder="Entrer Nom Fournisseur">
-                        <button id="filter-button" class="ml-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">Filtrer</button>
-                        <button id="reset-button" class="ml-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500">Réinitialiser</button>
-                    </div>
+                        <div class="flex items-center mb-4">
+                            <input type="text" id="supplier-filter" class="form-input w-full rounded-md shadow-sm"
+                                placeholder="Entrer Nom Fournisseur">
+                            <button id="filter-button"
+                                class="ml-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">Filtrer</button>
+                            <button id="reset-button"
+                                class="ml-2 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500">Réinitialiser</button>
+                        </div>
                         <div class="border flex flex-col">
                             <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
                                 <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
@@ -114,6 +117,16 @@ document.addEventListener("DOMContentLoaded", function() {
                                                             </svg>
                                                             <span class="sr-only">Supprimer</span>
                                                         </x-danger-button>
+                                                        <a
+                                                            href="{{ route('supplier.show', ['supplier' => $supplier->id]) }}">
+                                                            <button
+                                                                class="bg-lime-500 text-black hover:bg-lime-600 focus:outline-none px-4 py-2 rounded">
+                                                                Plus d'info
+                                                            </button>
+                                                        </a>
+
+
+
                                                         <x-modal name="confirm-supplier-{{$supplier->id}}-deletion"
                                                             focusable>
                                                             <form method="post" action="{{ route('supplier.destroy', ["supplier"=>
