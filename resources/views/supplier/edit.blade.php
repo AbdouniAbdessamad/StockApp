@@ -43,7 +43,13 @@
                                     autocomplete="country" />
                                 <x-input-error class="mt-2" :messages="$errors->get('country')" />
                             </div>
-
+                            <div>
+                                <x-input-label for="address" :value="__('Pays')" />
+                                <x-text-input id="address" name="address" type="text" class="mt-1 block w-full"
+                                    :value="old('address', $supplier->address)" required autofocus
+                                    autocomplete="address" />
+                                <x-input-error class="mt-2" :messages="$errors->get('address')" />
+                            </div>
                             <div>
                                 <x-input-label for="phone" :value="__('Numéro de téléphone')" />
                                 <x-text-input id="phone" name="phone" type="number" class="mt-1 block w-full"

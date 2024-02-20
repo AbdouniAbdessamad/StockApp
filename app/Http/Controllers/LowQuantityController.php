@@ -25,9 +25,9 @@ class LowQuantityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(LowQuantity $lowquantity)
     {
-        LowQuantity::destroy($id);
-        return redirect()->route('alert.index')->with('success', 'Low quantity article deleted successfully.');
+        $lowquantity->delete();
+        return redirect()->route('alert.index');
     }
 }
