@@ -1,28 +1,30 @@
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById('filter-button').addEventListener('click', function() {
-        var filterValue = document.getElementById('supplier-filter').value.trim().toLowerCase();
-        var rows = document.querySelectorAll('tbody tr');
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById('filter-button').addEventListener('click', function() {
+            var filterValue = document.getElementById('supplier-filter').value.trim().toLowerCase();
+            var rows = document.querySelectorAll('tbody tr');
 
-        rows.forEach(function(row) {
-            var name = row.querySelector('td:nth-child(2)').textContent.trim().toLowerCase();
-            if (name.includes(filterValue)) {
+            rows.forEach(function(row) {
+                var id = row.querySelector('td:first-child').textContent.trim().toLowerCase(); // Adjust this line to target the first column
+                if (id.includes(filterValue)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+
+        document.getElementById('reset-button').addEventListener('click', function() {
+            var rows = document.querySelectorAll('tbody tr');
+            rows.forEach(function(row) {
                 row.style.display = '';
-            } else {
-                row.style.display = 'none';
-            }
+            });
+            document.getElementById('supplier-filter').value = '';
         });
     });
+    </script>
 
-    document.getElementById('reset-button').addEventListener('click', function() {
-        var rows = document.querySelectorAll('tbody tr');
-        rows.forEach(function(row) {
-            row.style.display = '';
-        });
-        document.getElementById('supplier-filter').value = '';
-    });
-});
-</script>
+
 <x-app-layout>
     <x-slot name="header">
         <x-slot name="header">

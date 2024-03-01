@@ -6,8 +6,8 @@
             {{ __('Quantité existante') }}
         </h2>
     </x-slot>
-    <br>    
-    <h1 class="text-center text-2xl">Article à basse quantité sont en rouge !</h1>
+    <br>
+    <h1 class="text-center text-2xl">Articles à basse quantité sont en orange !</h1>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -23,11 +23,12 @@
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
                             @foreach ($lowquantities as $article)
-                            <tr @if ($article->quantity < 10) style="background-color: #FF0000;"@endif>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $article->ref }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $article->name }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $article->quantity }}</td>
+                            <tr class="{{ $article->quantity < 10 ? 'bg-orange-500' : '' }}">
+                                <td class="px-6 py-4 text-lg whitespace-nowrap">{{ $article->ref }}</td>
+                                <td class="px-6 py-4 text-lg whitespace-nowrap">{{ $article->name }}</td>
+                                <td class="px-6 py-4 text-lg whitespace-nowrap">{{ $article->quantity }}</td>
                             </tr>
+
                             @endforeach
                         </tbody>
                     </table>
