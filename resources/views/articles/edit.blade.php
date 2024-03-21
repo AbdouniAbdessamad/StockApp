@@ -85,7 +85,6 @@
                                 <x-input-error class="mt-2" :messages="$errors->get('category_id')" />
                             </div>
 
-
                             <div>
                                 <x-input-label for="status" :value="__('Status')" />
                                 <select name="status" id="status">
@@ -94,6 +93,13 @@
                                 </select>
                                 <x-input-error class="mt-2" :messages="$errors->get('status')" />
 
+                            </div>
+
+                            <div>
+                                <x-input-label for="emplacement" :value="__('Emplacement')" />
+                                <x-text-input id="emplacement" name="emplacement" type="text" class="mt-1 block w-full"
+                                    :value="old('emplacement,$article->emplacement')" required autofocus autocomplete="emplacement" />
+                                <x-input-error class="mt-2" :messages="$errors->get('emplacement')" />
                             </div>
 
                             <div>
@@ -107,7 +113,7 @@
 
 
                             <div class="flex items-center gap-4">
-                                <x-primary-button>{{ __('Save') }}</x-primary-button>
+                                <x-primary-button>{{ __('Sauvegardé') }}</x-primary-button>
 
                                 @if (session('status') === 'article-updated')
                                 <p x-data="{ show: true }" x-show="show" x-transition

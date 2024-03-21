@@ -24,6 +24,7 @@
                 $table->string("ref");
                 $table->string("name");
                 $table->integer("quantity");
+                $table->string("emplacement")->nullable();
                 $table->string("status")->nullable();
                 $table->foreignId("category_id")->nullable()->constrained('categories');
                 $table->foreignId("last_editor_id")->constrained('users'); // Specify the referenced table

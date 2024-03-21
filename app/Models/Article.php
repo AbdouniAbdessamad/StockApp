@@ -21,6 +21,7 @@ class Article extends Model
         'quantity',
         'category_id',
         'status',
+        'emplacement',
         'last_editor_id'
     ];
 

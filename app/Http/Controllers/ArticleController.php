@@ -52,6 +52,7 @@ class ArticleController extends Controller
             'name' => 'required|max:225|min:1',
             'quantity' => 'required|numeric|min:0',
             'category_id' => '', 
+            'emplacement' => '',
             'status' => '', 
         ]);
 
@@ -64,6 +65,7 @@ class ArticleController extends Controller
         $article->quantity = $request->quantity;
         $article->category_id = $request->category_id;
         $article->status = $request->status;
+        $article->emplacement = $request->emplacement;
         $article->last_editor_id = Auth::id();
         $article->save();
 
@@ -110,6 +112,7 @@ class ArticleController extends Controller
             "ref" => "required|max:225|min:1",
             "name" => "required|max:225|min:1",
             "quantity" => "required|numeric|min:0",
+            "emplacement" => "",
             "category_id" => "",
             "status" => "",
         ]);

@@ -82,6 +82,12 @@
                                 <x-input-error class="mt-2" :messages="$errors->get('category_id')" />
                             </div>
 
+                            <div>
+                                <x-input-label for="emplacement" :value="__('Emplacement')" />
+                                <x-text-input id="emplacement" name="emplacement" type="text" class="mt-1 block w-full"
+                                    :value="old('emplacement')"  autofocus autocomplete="emplacement" />
+                                <x-input-error class="mt-2" :messages="$errors->get('emplacement')" />
+                            </div>
 
                             <div>
                                 <x-input-label for="status" :value="__('Status')" />
